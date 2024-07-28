@@ -1,6 +1,3 @@
--- in this script, "known crane" means a crane that has been spawned and has also loaded, getting added to knowncranes list of vehicle ids
--- I guess maybe we technically "know about" more cranes depending on who you ask but thats not what I mean...
-
 ---- DEBUG / PRINT ----
 function debugprint(...)
     local args = {...}
