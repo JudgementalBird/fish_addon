@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <playlist folder_path="data/missions/fish_addon" file_store="4" name="Fish Addon">
-	<locations location_id_counter="26" component_id_counter="26">
+	<locations location_id_counter="26" component_id_counter="27">
 		<locations>
-			<l id="3" tile="data/tiles/island_43_multiplayer_base.xml" name="MULTIPLAYER ISLAND BASE" is_env_mod="true" env_mod_spawn_num="1">
-				<components/>
-			</l>
-			<l id="4" name="OCEAN" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="7" tile="data/tiles/mega_island_9_8.xml" name="SAWYER 9_8" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="4" name="id_4" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_4.xml" vehicle_file_store="4" vehicle_is_static="true">
-						<spawn_transform 30="1.528097" 31="3.5" 32="-0.097027"/>
-						<spawn_bounds>
-							<min x="-8.875" y="-0.375" z="1.125"/>
-							<max x="1.625" y="6.625" z="3.375"/>
-						</spawn_bounds>
-						<spawn_local_offset x="3.625" y="-3.125" z="-2.25"/>
-						<graph_links/>
-					</c>
-				</components>
-			</l>
-			<l id="7" tile="data/tiles/mega_island_9_8.xml" name="SAWYER 9_8" is_env_mod="true" env_mod_spawn_num="1">
-				<components>
-					<c component_type="3" id="6" name="id_6" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_6.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="6" name="id1" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_6.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="0.005625" 02="0.999984" 20="-0.999984" 22="0.005625" 30="325.012177" 31="6.908275" 32="417.26236"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -31,9 +15,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="8" tile="data/tiles/mega_island_8_7.xml" name="SAWYER 8_7" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="8" tile="data/tiles/mega_island_8_7.xml" name="SAWYER 8_7" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="7" name="id_7" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_7.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="7" name="id2" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_7.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.248168" 02="-0.968717" 20="0.968717" 22="-0.248168" 30="100.310249" 31="5.861245" 32="66.984985"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -44,9 +28,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="9" tile="data/tiles/mega_island_15_2.xml" name="SAWYER 15_2" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="9" tile="data/tiles/mega_island_15_2.xml" name="SAWYER 15_2" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="8" name="id_8" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_8.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="8" name="id3" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_8.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.87602" 02="-0.482276" 20="0.482276" 22="-0.87602" 30="115.013954" 31="10.008847" 32="-426.187927"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -57,9 +41,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="12" tile="data/tiles/mega_island_2_9.xml" name="SAWYER 2_9" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="12" tile="data/tiles/mega_island_2_9.xml" name="SAWYER 2_9" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="9" name="id_9" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_9.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="9" name="id4" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_9.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="0.982256" 02="-0.187546" 20="0.187546" 22="0.982256" 30="437.744507" 31="9.048859" 32="-490.068268"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -70,9 +54,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="13" tile="data/tiles/island_34_military.xml" name="MILITARY BASE" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="13" tile="data/tiles/island_34_military.xml" name="MILITARY BASE" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="10" name="id_10" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_10.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="10" name="id5" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_10.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.53682" 02="0.843697" 20="-0.843697" 22="-0.53682" 30="-127.890724" 31="10.947511" 32="331.680511"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -83,9 +67,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="15" tile="data/tiles/island_25.xml" name="HARBOUR BASE" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="15" tile="data/tiles/island_25.xml" name="HARBOUR BASE" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="11" name="id_11" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_11.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="11" name="id6" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_11.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="0.004398" 02="-0.99999" 20="0.99999" 22="0.004398" 30="39.691319" 31="8.516291" 32="-64.420288"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -96,22 +80,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="16" tile="data/tiles/island_15.xml" name="CREATIVE BASE" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="17" tile="data/tiles/island_43_multiplayer_base.xml" name="MULTIPLAYER ISLAND BASE" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="12" name="id_12" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_12.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
-						<spawn_transform 00="-0.026989" 02="-0.999636" 20="0.999636" 22="-0.026989" 30="-184.872879" 31="7.95893" 32="-94.394379"/>
-						<spawn_bounds>
-							<min x="-8.875" y="-0.375" z="1.125"/>
-							<max x="1.625" y="6.625" z="3.375"/>
-						</spawn_bounds>
-						<spawn_local_offset x="3.625" y="-3.125" z="-2.25"/>
-						<graph_links/>
-					</c>
-				</components>
-			</l>
-			<l id="17" tile="data/tiles/island_43_multiplayer_base.xml" name="MULTIPLAYER ISLAND BASE" is_env_mod="true" env_mod_spawn_num="1">
-				<components>
-					<c component_type="3" id="13" name="id_13" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_13.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="13" name="id7" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_13.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 30="422.236298" 31="10.674867" 32="-143.83255"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -122,9 +93,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="18" tile="data/tiles/arid_island_8_15.xml" name="MEIER 8_15" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="18" tile="data/tiles/arid_island_8_15.xml" name="MEIER 8_15" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="14" name="id_14" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_14.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="14" name="id8" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_14.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="0.004041" 02="0.999992" 20="-0.999992" 22="0.004041" 30="-179.259369" 31="11.755795" 32="-299.341614"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -135,9 +106,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="19" tile="data/tiles/arid_island_5_14.xml" name="MEIER 5_14" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="19" tile="data/tiles/arid_island_5_14.xml" name="MEIER 5_14" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="15" name="id_15" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_15.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="15" name="id9" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_15.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.005303" 02="0.999986" 20="-0.999986" 22="-0.005303" 30="-337.058594" 31="5.630107" 32="-344.50769"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -148,9 +119,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="20" tile="data/tiles/arid_island_24_3.xml" name="MEIER 24_3" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="20" tile="data/tiles/arid_island_24_3.xml" name="MEIER 24_3" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="17" name="id_17" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_17.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="17" name="id10" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_17.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.999902" 02="-0.014025" 20="0.014025" 22="-0.999902" 30="258.120636" 31="9.252967" 32="240.378296"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -161,9 +132,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="21" tile="data/tiles/arid_island_26_14.xml" name="MEIER 26_14" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="21" tile="data/tiles/arid_island_26_14.xml" name="MEIER 26_14" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="19" name="id_19" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_19.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="19" name="id11" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_19.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.229354" 02="0.973343" 20="-0.973343" 22="-0.229354" 30="-329.149139" 31="11.961432" 32="182.052704"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -174,9 +145,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="22" tile="data/tiles/island_33_tile_32.xml" name="TERMINAL SPYCAKES" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="22" tile="data/tiles/island_33_tile_32.xml" name="TERMINAL SPYCAKES" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="22" name="id_22" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_22.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="22" name="id12" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_22.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.593614" 02="-0.80475" 20="0.80475" 22="-0.593614" 30="99.203781" 31="8.508257" 32="177.712173"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -187,9 +158,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="23" tile="data/tiles/arctic_tile_12_oilrig.xml" name="ARCTIC OIL PLATFORM" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="23" tile="data/tiles/arctic_tile_12_oilrig.xml" name="ARCTIC OIL PLATFORM" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="23" name="id_23" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_23.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="23" name="id13" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_23.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="-0.00121" 02="0.999999" 20="-0.999999" 22="-0.00121" 30="157.884308" 31="6.039002" 32="-11.326688"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -200,9 +171,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="24" tile="data/tiles/arctic_island_playerbase.xml" name="ARCTIC ISLAND BASE" is_env_mod="true" env_mod_spawn_num="1">
+			<l id="24" tile="data/tiles/arctic_island_playerbase.xml" name="ARCTIC ISLAND BASE" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="24" name="id_24" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_24.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
+					<c component_type="3" id="24" name="id14" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_24.xml" vehicle_file_store="4" vehicle_is_static="true" vehicle_is_invulnerable="true">
 						<spawn_transform 00="0.496183" 02="0.868218" 20="-0.868218" 22="0.496183" 30="161.668747" 31="10.199517" 32="302.34433"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
@@ -213,12 +184,9 @@
 					</c>
 				</components>
 			</l>
-			<l id="25" name="OCEAN" is_env_mod="true" env_mod_spawn_num="1">
-				<components/>
-			</l>
 			<l id="26" tile="data/tiles/island_15.xml" name="CREATIVE BASE" env_mod_spawn_num="1">
 				<components>
-					<c component_type="3" id="26" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_26.xml" vehicle_file_store="4" vehicle_is_static="true">
+					<c component_type="3" id="26" name="id15" dynamic_object_type="2" character_outfit_category="11" character_type="1" vehicle_file_name="data/missions_working/vehicle_26.xml" vehicle_file_store="4" vehicle_is_static="true">
 						<spawn_transform 30="-269.427368" 31="8.159649" 32="-179.926865"/>
 						<spawn_bounds>
 							<min x="-8.875" y="-0.375" z="1.125"/>
