@@ -23,7 +23,7 @@ require("http_functions")
 ---- !! CALLBACKS !! ----
 
 function onCreate(is_world_create)
-	--debug_announce_to_chat(3, "oncreate called !")
+	debug_announce_to_chat(2, "oncreate called !")
 	ticks = 0
 end
 
@@ -32,12 +32,12 @@ function onTick(game_ticks)
 	advance_all_fish_withdrawals()
 
 	if slow_interval(ticks) then
-		--debug_announce_to_chat(2, "slow interval!")
+		debug_announce_to_chat(2, "slow interval!")
 		recreate_rapid_info_table()
 	end
 	
 	if rapid_interval(ticks) then
-		--debug_announce_to_chat(2, "fast interval!")
+		debug_announce_to_chat(2, "fast interval!")
 
 		check_queue_all_withdrawals()
 	end

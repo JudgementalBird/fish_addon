@@ -9,7 +9,20 @@ function track_crane_as_loaded(crane_index, its_vehicle_id)
 end
 
 function handle_potential_crane_load(vehicle_id)
-	local loading_crane_tag = server.getVehicleData(vehicle_id).tags_full
+	local VEHICLE_DATA, is_success = server.getVehicleData(vehicle_id)
+	if not is_success then
+		debug_announce_to_chat(2, "Failed to get vehicle data for vehicle &",vehicle_id)
+		return
+	end
+	if isnt_table(VEHICLE_DATA) then
+		warn_entire_chat("Succeeded at getting vehicle data, but it is not a table?? contact judge")
+		return
+	end
+	local loading_crane_tag = VEHICLE_DATA.tags_full
+	if isnt_string(loading_crane_tag) then
+		warn_entire_chat("Succeeded at getting vehicle data, and it is a table, but the tags are not a string?? contact judge")
+		return
+	end
 	
 	local found_match = false
 	for crane_index, this_crane in pairs(g_savedata.crane_glob_of_info) do
@@ -67,7 +80,20 @@ function handle_potential_known_crane_unload(this_vehicle_id)
 end
 
 function loaded_vic_is_crane(questioned_vehicle_id)
-	local loading_crane_tag = server.getVehicleData(vehicle_id).tags_full
+	local VEHICLE_DATA, is_success = server.getVehicleData(questioned_vehicle_id)
+	if not is_success then
+		debug_announce_to_chat(2, "Failed to get vehicle data for vehicle &",questioned_vehicle_id)
+		return
+	end
+	if isnt_table(VEHICLE_DATA) then
+		warn_entire_chat("Succeeded at getting vehicle data, but it is not a table?? contact judge")
+		return
+	end
+	local loading_crane_tag = VEHICLE_DATA.tags_full
+	if isnt_string(loading_crane_tag) then
+		warn_entire_chat("Succeeded at getting vehicle data, and it is a table, but the tags are not a string?? contact judge")
+		return
+	end
 	
 	local found_match = false
 	for crane_index, this_crane in pairs(g_savedata.crane_glob_of_info) do
@@ -79,9 +105,6 @@ function loaded_vic_is_crane(questioned_vehicle_id)
 		--sanity checks
 		if found_match ~= false then
 			warn_entire_chat("Warning! Questioned vehicle matches tag with multiple potential cranes?? sticking with highest index one - contact judge!!!")
-		end
-		if this_crane.loaded ~= false then
-			warn_entire_chat("Warning! Questioned vehicle matches tag with an ALREADY LOADED crane?? contact judge!!!")
 		end
 
 		found_match = true

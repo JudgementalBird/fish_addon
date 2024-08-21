@@ -13,7 +13,7 @@ function assert_hopper_vehicle_list_exists()
 end
 
 function in_normal_spawn_queue(vehicle_id) --> times_queued, queued_at
-	local times_queued, queued_at
+	local times_queued, queued_at = 0, nil
 	for k,data in ipairs(g_savedata.spawning_queue_data) do
 		if data.vehicle_id == vehicle_id then
 			queued_at = k
@@ -21,15 +21,6 @@ function in_normal_spawn_queue(vehicle_id) --> times_queued, queued_at
 		end
 	end
 	return times_queued, queued_at
-end
-function is_in_server_spawn_queue(vehicle_id) --> bool
-	local times_queued
-	for k,data in ipairs(g_savedata.server_spawning_queue_data) do
-		if data.vehicle_id == vehicle_id then
-			times_queued = times_queued + 1
-		end
-	end
-	return times_queued > 0
 end
 
 function handle_potential_hopper_vehicle_load(vehicle_id)
