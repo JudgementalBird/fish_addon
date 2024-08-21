@@ -1,3 +1,4 @@
+
 ticks = 0
 ANNOUNCE_TO = -1 -- print commands
 
@@ -138,47 +139,6 @@ function warn_peer_in_chat(peer_id, ...)
 	peerprint(peer_id, ...)
 end
 
-function print_r(t, fd)
-	local function print(str)
-		str = str or ""
-		debugprint(str)
-	end
-	local print_r_cache={}
-	local function sub_print_r(t,indent)
-		local function quotesm(thing)
-			if type(thing) == "string" then return "\""..thing.."\"" end
-			return tostring(thing)
-		end
-		if (print_r_cache[tostring(t)]) then
-			print(indent.."*"..tostring(t))
-		else
-		print_r_cache[tostring(t)]=true
-		if (type(t)=="table") then
-			for pos,val in pairs(t) do
-				if (type(val)=="table") then
-					print(indent.."["..quotesm(pos).."] = {")
-					sub_print_r(val,indent..string.rep(" ",string.len(pos)+6))
-					print(indent..string.rep(" ",string.len(pos)+4).."}")
-				elseif (type(val)=="string") then
-					print(indent.."["..quotesm(pos)..'] = "'..val..'"')
-				else
-					print(indent.."["..quotesm(pos).."] = "..tostring(val))
-				end
-			end
-			else
-				print(indent..tostring(t))
-			end
-		end
-	end
-	if (type(t)=="table") then
-		print(" {")
-		sub_print_r(t,"  ")
-		print("}")
-	else
-		sub_print_r(t,"  ")
-	end
-	print()
-end
 
 function printsent(request)
 	debug_announce_to_chat(2, "Sent: "..request)
@@ -200,23 +160,9 @@ end
 function withoutpeerflag(reply)
 	return reply:sub(1, reply:find("#")-1)
 end
+
+
 admin_possibilities = {
-	http = {
-		{
-			command = {"?test_http"},
-			send = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				local request = "/test_message/13/4/58/765482599353/42"
-				server.httpGet(usedport, request)
-				printsent(request)
-			end,
-			replyflags = {"test_response"},
-			handlers = {
-				function(reply)
-					announce_to_entire_chat(withoutreplyflag(reply))
-				end
-			}
-		}
-	},
 	no_http = {
 		{
 			command = {"?fishhelp","?fhelp"},
@@ -281,23 +227,6 @@ admin_possibilities = {
 				end
 			end
 		},{
-			command = {"?disable_logic"},
-			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				disable_much_core_functionality = not disable_much_core_functionality
-				peerprint(user_peer_id,"Is much core logic disabled? "..tostring(disable_much_core_functionality))
-			end
-		},{
-			command = {"?relax_errors"},
-			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				error_checking_not_relaxed = not error_checking_not_relaxed
-				peerprint(user_peer_id,"Is script doing expensive sanity checks? "..tostring(error_checking_not_relaxed))
-			end
-		},{
-			command = {"?despawn_known_cranes"},
-			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				despawn_all_known_cranes()
-			end
-		},{
 			command = {"?normal_rehandle_hopper_vehicle_load"},
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
 				if one == nil then
@@ -328,44 +257,10 @@ admin_possibilities = {
 				peerprint(user_peer_id, "Inserted {vehicle_id="..vid..", peer_id="..pid.."}")
 			end
 		},{
-			command = {"?clear_known_hopper_vehicle"},
-			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				if (one == nil) then
-					peerprint(user_peer_id, "This function needs a vehicle id!")
-					return
-				end
-				local vid = tonumber(one)
-				if vid == nil then
-					peerprint(user_peer_id, "This commands needs an argument that can be converted to a number as vehicle id!")
-					return
-				end
-				local match = false
-				for k,hopper_vehicle_data in ipairs(g_savedata.known_hopper_holding_vehicles) do
-					if hopper_vehicle_data.vehicle_id == vid then
-						if match ~= false then
-							warn_entire_chat("While clearing known hopper vehicle, multiple vehicles matched the provided id! Contact judge!")
-						end
-						match = k
-					end
-				end
-				if match ~= false then
-					table.remove(g_savedata.known_hopper_holding_vehicles, match)
-					peerprint(user_peer_id,"Removed known hopper carrying vehicle with vid "..vid.." at index "..k)
-				else
-					peerprint(user_peer_id,"Didn't find that one in the table")
-				end
-			end
-		},{
 			command = {"?setfish"},
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
 				server.setVehicleHopper(one, two, three, four)
 				peerprint(user_peer_id, "Tried to set hopper with name "..two.." on vehicle "..one.." to have "..three.." "..tostring(hopper_resource_lookup[four]).." ("..four..")")
-			end
-		},{
-			command = {"?queue_all_cranes"},
-			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				handle_queueing_cranes()
-				peerprint(user_peer_id, "Tried to handle queueing all cranes!")
 			end
 		},{
 			command = {"?simreboot"},
@@ -454,21 +349,6 @@ admin_possibilities = {
 }
 function execute_potential_admin_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
 	if is_admin then
-		for possibility_key,possibility in ipairs(admin_possibilities.http) do
-			local match = false
-			for k,v in ipairs(possibility.command) do
-				if (command == v) then
-					match = true
-				end
-			end
-			if match == true then
-				possibility.send(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
-			elseif type(possibility.commandfunction) == "function" then
-				if possibility.commandfunction(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four) then
-					possibility.send(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
-				end
-			end
-		end
 		for possibility_key,possibility in ipairs(admin_possibilities.no_http) do
 			local match = false
 			for k,v in ipairs(possibility.command) do
@@ -486,6 +366,7 @@ function execute_potential_admin_possibility(full_message, user_peer_id, is_admi
 		end
 	end
 end
+
 function is_table(a)
 	return type(a) == "table"
 end
@@ -602,44 +483,6 @@ function track_crane_as_despawned(crane_index)
 	g_savedata.crane_glob_of_info[crane_index].loaded = false
 	g_savedata.crane_glob_of_info[crane_index].vehicle_id = -1
 end
-function despawn_all_known_cranes()
-	if error_checking_not_relaxed and isnt_table(g_savedata.crane_glob_of_info) then
-		warn_entire_chat("crane_glob_of_info is nil??? Contact judge...")
-		return
-	end
-
-	local cranes_failed_to_despawn = 0
-	for crane_index,this_crane in ipairs(g_savedata.crane_glob_of_info) do
-
-		-- logic and sanity checks
-		if this_crane.loaded ~= true then
-			goto despawncranes_continue_next_crane
-		end
-		if error_checking_not_relaxed and isnt_bool(this_crane.loaded) then
-			warn_entire_chat("this_crane.loaded is not a boolean? Contact judge..")
-			goto despawncranes_continue_next_crane
-		end
-		if error_checking_not_relaxed and isnt_number(this_crane.vehicle_id) then
-			warn_entire_chat("this_crane.vehicle_id is not a number? Contact judge..")
-			goto despawncranes_continue_next_crane
-		end
-
-		local is_success = server.despawnVehicle(this_crane.vehicle_id, true)
-		if is_success then
-			track_crane_as_despawned(crane_index)
-		else
-			cranes_failed_to_despawn = cranes_failed_to_despawn + 1
-		end
-
-		::despawncranes_continue_next_crane::
-	end
-
-	if (cranes_failed_to_despawn <= 0) then
-		debug_announce_to_chat(2,"Despawned all cranes that were loaded in (some may still spawn in later as you move around) :yum:")
-	else
-		warn_entire_chat(cranes_failed_to_despawn.." cranes failed to despawn! contact judge probably..")
-	end
-end
 
 function track_crane_as_spawned(crane_index, its_vehicle_id)
 	g_savedata.crane_glob_of_info[crane_index].loaded = true
@@ -728,30 +571,20 @@ end
 function onVehicleSpawn(vehicle_id, peer_id, x, y, z, group_cost, group_id)
 	--debug_announce_to_chat(2, "onvehiclespawn called !")
 	debug_announce_to_chat(2, "Vehicle spawned! vehicle_id: &",vehicle_id,"# peer_id: &",peer_id,"# group_cost: &",group_cost,"# group_id: &",group_id)
-
-	note_down_spawn_data(vehicle_id, peer_id)
 end
 
 function onVehicleLoad(vehicle_id)
 	--debug_announce_to_chat(2, "onvehicleload called !")
 	debug_announce_to_chat(2, "Loading vehicle id: "..vehicle_id)
-
-	if not is_known_crane(vehicle_id) then
-		handle_potential_hopper_vehicle_load(vehicle_id)
-	end
 end
 
 function onVehicleUnload(vehicle_id)
 	--debug_announce_to_chat(3, "onvehicleunload called !")
 	debug_announce_to_chat(2, "Unloading vehicle id: "..vehicle_id)
-
-	handle_potential_hopper_vehicle_unload(vehicle_id)
 end
 function onVehicleDespawn(vehicle_id, peer_id)
 	--debug_announce_to_chat(3, "onvehicledespawn called !")
 	debug_announce_to_chat(2, "Vehicle despawned! vehicle_id: &",vehicle_id,"# peer_id: &",peer_id)
-
-	handle_potential_hopper_vehicle_unload(vehicle_id)
 end
 
 function onCustomCommand(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
