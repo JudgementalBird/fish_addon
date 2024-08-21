@@ -26,13 +26,6 @@ end
 function round(x) return math.floor((x+0.5)*100)/100 end
 
 
-function slow_interval(ticks)
-	return (ticks%700) == 0 --1080 = 18 seconds
-end
-function rapid_interval(ticks)
-	return (ticks%120) == 0 --120 = 2 seconds
-end
-
 function get_steam_id(peer_id)
 	local steam_id
 	local PLAYER_LIST = server.getPlayers()
@@ -69,18 +62,6 @@ function get_peer_id(steam_id)
 	return peer_id
 end
 
-function note_down_spawn_data_server(vehicle_id)
-	if error_checking_not_relaxed then
-		for _,data in ipairs(g_savedata.server_spawning_queue_data) do
-			if data.vehicle_id == vehicle_id then
-				warn_entire_chat("Spawning vehicle shares vehicle id ("..vehicle_id..") with already spawned vehicle.. contact judge..")
-			end
-		end
-	end
-
-	table.insert(g_savedata.server_spawning_queue_data, {vehicle_id=vehicle_id, got_response_yet=false})
-end
-
 function note_down_spawn_data(vehicle_id, peer_id)
 	if peer_id == -1 then
 		debug_announce_to_chat(2,"A vehicle was spawned by the server!")
@@ -101,6 +82,8 @@ end
 function has_any_hopper(LOADED_VEHICLE_DATA)
 	return (next(LOADED_VEHICLE_DATA.components.hoppers)~=nil)
 end
+
+
 
 function matrixes_roughly_close(first_matrix,second_matrix)
 	local threshold = 100
