@@ -21,7 +21,7 @@ function recreate_rapid_info_table()
 		
 		for this_crane_index,all_info_this_crane in ipairs(g_savedata.crane_glob_of_info) do
 			
-			if not all_info_this_crane.spawned == true then
+			if all_info_this_crane.loaded == false then
 				goto recreate_continue_next_crane
 			end
 			local known_crane_transform_matrix, is_success = server.getVehiclePos(all_info_this_crane.vehicle_id)

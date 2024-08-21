@@ -69,22 +69,9 @@ function get_peer_id(steam_id)
 	return peer_id
 end
 
-function note_down_spawn_data_server(vehicle_id)
-	if error_checking_not_relaxed then
-		for _,data in ipairs(g_savedata.server_spawning_queue_data) do
-			if data.vehicle_id == vehicle_id then
-				warn_entire_chat("Spawning vehicle shares vehicle id ("..vehicle_id..") with already spawned vehicle.. contact judge..")
-			end
-		end
-	end
-
-	table.insert(g_savedata.server_spawning_queue_data, {vehicle_id=vehicle_id, got_response_yet=false})
-end
-
 function note_down_spawn_data(vehicle_id, peer_id)
 	if peer_id == -1 then
 		debug_announce_to_chat(2,"A vehicle was spawned by the server!")
-		note_down_spawn_data_server(vehicle_id)
 		return
 	end
 	if error_checking_not_relaxed then

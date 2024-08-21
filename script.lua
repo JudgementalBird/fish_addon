@@ -18,15 +18,13 @@ require("fish_withdrawing_functions")
 
 require("http_functions")
 
-require("ash_vehicles_integration")
+--require("ash_vehicles_integration")
 
 ---- !! CALLBACKS !! ----
 
 function onCreate(is_world_create)
 	--debug_announce_to_chat(3, "oncreate called !")
 	ticks = 0
-	despawn_all_known_cranes()
-	handle_queueing_cranes()
 end
 
 function onTick(game_ticks)	
@@ -57,7 +55,7 @@ function onVehicleLoad(vehicle_id)
 	--debug_announce_to_chat(2, "Loading vehicle id: "..vehicle_id)
 
 	handle_potential_crane_load(vehicle_id)
-	if not is_known_crane(vehicle_id) then
+	if not loaded_vic_is_crane(vehicle_id) then
 		handle_potential_hopper_vehicle_load(vehicle_id)
 	end
 end

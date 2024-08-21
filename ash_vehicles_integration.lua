@@ -20,7 +20,7 @@
 --		if error_checking_not_relaxed then
 --			for _,already_queued in ipairs(g_savedata.spawning_queue_data) do
 --				if already_queued.vehicle_id == vehicle_id then
---					warn_entire_chat("Ash spawned vehicle shares vehicle id ("..vehicle_id..") with already spawned vehicle.. contact judge..")
+--					warn_entire_chat("Ash spawned/loaded vehicle shares vehicle id ("..vehicle_id..") with already loaded vehicle.. contact judge..")
 --				end
 --			end
 --		end

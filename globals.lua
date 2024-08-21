@@ -6,26 +6,25 @@ disable_much_core_functionality = false
 error_checking_not_relaxed = true
 
 g_savedata.spawning_queue_data = {}
-g_savedata.server_spawning_queue_data = {}
 
 g_savedata.fish_withdrawal_tasks = {}
 
 g_savedata.crane_glob_of_info = {
-	{tag="id1",  queued=false,  spawned=false,  vehicle_id=-1,  location="SAWYER 9_8"},
-	{tag="id2",  queued=false,  spawned=false,  vehicle_id=-1,  location="SAWYER 8_7"},
-	{tag="id3",  queued=false,  spawned=false,  vehicle_id=-1,  location="SAWYER 15_2"},
-	{tag="id4",  queued=false,  spawned=false,  vehicle_id=-1,  location="SAWYER 2_9"},
-	{tag="id5",  queued=false,  spawned=false,  vehicle_id=-1,  location="MILITARY BASE"},
-	{tag="id6",  queued=false,  spawned=false,  vehicle_id=-1,  location="HARBOUR BASE"},
-	{tag="id7",  queued=false,  spawned=false,  vehicle_id=-1,  location="MULTIPLAYER ISLAND BASE"},
-	{tag="id8",  queued=false,  spawned=false,  vehicle_id=-1,  location="MEIER 8_15"},
-	{tag="id9",  queued=false,  spawned=false,  vehicle_id=-1,  location="MEIER 5_14"},
-	{tag="id10",  queued=false,  spawned=false,  vehicle_id=-1,  location="MEIER 24_3"},
-	{tag="id11",  queued=false,  spawned=false,  vehicle_id=-1,  location="MEIER 26_14"},
-	{tag="id12",  queued=false,  spawned=false,  vehicle_id=-1,  location="TERMINAL SPYCAKES"},
-	{tag="id13",  queued=false,  spawned=false,  vehicle_id=-1,  location="ARCTIC OIL PLATFORM"},
-	{tag="id14",  queued=false,  spawned=false,  vehicle_id=-1,  location="ARCTIC ISLAND BASE"},
-	{tag="id15",  queued=false,  spawned=false,  vehicle_id=-1,  location="CREATIVE BASE"}
+	{tag="id1",  loaded=false,  vehicle_id=-1,  location="SAWYER 9_8"},
+	{tag="id2",  loaded=false,  vehicle_id=-1,  location="SAWYER 8_7"},
+	{tag="id3",  loaded=false,  vehicle_id=-1,  location="SAWYER 15_2"},
+	{tag="id4",  loaded=false,  vehicle_id=-1,  location="SAWYER 2_9"},
+	{tag="id5",  loaded=false,  vehicle_id=-1,  location="MILITARY BASE"},
+	{tag="id6",  loaded=false,  vehicle_id=-1,  location="HARBOUR BASE"},
+	{tag="id7",  loaded=false,  vehicle_id=-1,  location="MULTIPLAYER ISLAND BASE"},
+	{tag="id8",  loaded=false,  vehicle_id=-1,  location="MEIER 8_15"},
+	{tag="id9",  loaded=false,  vehicle_id=-1,  location="MEIER 5_14"},
+	{tag="id10",  loaded=false,  vehicle_id=-1,  location="MEIER 24_3"},
+	{tag="id11",  loaded=false,  vehicle_id=-1,  location="MEIER 26_14"},
+	{tag="id12",  loaded=false,  vehicle_id=-1,  location="TERMINAL SPYCAKES"},
+	{tag="id13",  loaded=false,  vehicle_id=-1,  location="ARCTIC OIL PLATFORM"},
+	{tag="id14",  loaded=false,  vehicle_id=-1,  location="ARCTIC ISLAND BASE"},
+	{tag="id15",  loaded=false,  vehicle_id=-1,  location="CREATIVE BASE"}
 }
 
 logging = {
@@ -36,7 +35,7 @@ logging = {
 		"involved debug",
 		"ALL debug"
 	},
-	debugstate = 1,
+	debugstate = 2,
 	get_debug = function()
 		return logging.debug[logging.debugstate]
 	end,
