@@ -1,0 +1,31 @@
+"filename", "language", "Lua", "TOML", "XML", "comment", "blank", "total"
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\addonluabuilder.toml", "TOML", 0, 11, 0, 0, 5, 16
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\admin_possibilities.lua", "Lua", 248, 0, 0, 4, 0, 252
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\crane_functions.lua", "Lua", 131, 0, 0, 11, 28, 170
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\execute_admin_possibilites_function.lua", "Lua", 34, 0, 0, 0, 0, 34
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\execute_user_possibilites_function.lua", "Lua", 32, 0, 0, 0, 0, 32
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\fish_withdrawing_functions.lua", "Lua", 279, 0, 0, 19, 61, 359
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\general_functions.lua", "Lua", 84, 0, 0, 0, 12, 96
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\globals.lua", "Lua", 102, 0, 0, 0, 6, 108
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\hopper_vehicle_functions.lua", "Lua", 60, 0, 0, 5, 9, 74
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\http_functions.lua", "Lua", 54, 0, 0, 1, 11, 66
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\logging_printing.lua", "Lua", 90, 0, 0, 3, 7, 100
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\script.lua", "Lua", 82, 0, 0, 5, 32, 119
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\user_possibilities.lua", "Lua", 81, 0, 0, 4, 0, 85
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\playlist.xml", "XML", 0, 0, 202, 0, 2, 204
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_10.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_11.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_13.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_14.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_15.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_17.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_19.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_22.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_23.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_24.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_26.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_6.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_7.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_8.xml", "XML", 0, 0, 29, 0, 1, 30
+"c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_9.xml", "XML", 0, 0, 29, 0, 1, 30
+"Total", "-", 1277, 11, 637, 52, 188, 2165

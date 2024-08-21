@@ -1,0 +1,57 @@
+Date : 2024-08-19 00:26:46
+Directory : c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon
+Total : 29 files,  1925 codes, 52 comments, 188 blanks, all 2165 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Lua      |         12 |      1,277 |         52 |        166 |      1,495 |
+| XML      |         16 |        637 |          0 |         17 |        654 |
+| TOML     |          1 |         11 |          0 |          5 |         16 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                             | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                |         29 |      1,925 |         52 |        188 |      2,165 |
+| . (Files)                                                                                        |         13 |      1,288 |         52 |        171 |      1,511 |
+| vehicles_and_playlist                                                                            |         16 |        637 |          0 |         17 |        654 |
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                         | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\addonluabuilder.toml                    | TOML     |         11 |          0 |          5 |         16 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\admin_possibilities.lua                 | Lua      |        248 |          4 |          0 |        252 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\crane_functions.lua                     | Lua      |        131 |         11 |         28 |        170 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\execute_admin_possibilites_function.lua | Lua      |         34 |          0 |          0 |         34 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\execute_user_possibilites_function.lua  | Lua      |         32 |          0 |          0 |         32 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\fish_withdrawing_functions.lua          | Lua      |        279 |         19 |         61 |        359 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\general_functions.lua                   | Lua      |         84 |          0 |         12 |         96 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\globals.lua                             | Lua      |        102 |          0 |          6 |        108 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\hopper_vehicle_functions.lua            | Lua      |         60 |          5 |          9 |         74 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\http_functions.lua                      | Lua      |         54 |          1 |         11 |         66 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\logging_printing.lua                    | Lua      |         90 |          3 |          7 |        100 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\script.lua                              | Lua      |         82 |          5 |         32 |        119 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\user_possibilities.lua                  | Lua      |         81 |          4 |          0 |         85 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\playlist.xml      | XML      |        202 |          0 |          2 |        204 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_10.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_11.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_13.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_14.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_15.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_17.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_19.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_22.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_23.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_24.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_26.xml    | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_6.xml     | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_7.xml     | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_8.xml     | XML      |         29 |          0 |          1 |         30 |
+| c:\Users\Squingle\Desktop\!folders\! d-github\fish_addon\vehicles_and_playlist\vehicle_9.xml     | XML      |         29 |          0 |          1 |         30 |
+| Total                                                                                            |          |      1,925 |         52 |        188 |      2,165 |
++--------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
