@@ -1,25 +1,26 @@
+--test concluded
 
 ticks = 0
 ANNOUNCE_TO = -1 -- print commands
 
 g_savedata.spawning_queue_data = {}
 
-g_savedata.crane_glob_of_info = {
-	{tag="id1",  loaded=false,  vehicle_id=-1,  location="SAWYER 9_8"},
-	{tag="id2",  loaded=false,  vehicle_id=-1,  location="SAWYER 8_7"},
-	{tag="id3",  loaded=false,  vehicle_id=-1,  location="SAWYER 15_2"},
-	{tag="id4",  loaded=false,  vehicle_id=-1,  location="SAWYER 2_9"},
-	{tag="id5",  loaded=false,  vehicle_id=-1,  location="MILITARY BASE"},
-	{tag="id6",  loaded=false,  vehicle_id=-1,  location="HARBOUR BASE"},
-	{tag="id7",  loaded=false,  vehicle_id=-1,  location="MULTIPLAYER ISLAND BASE"},
-	{tag="id8",  loaded=false,  vehicle_id=-1,  location="MEIER 8_15"},
-	{tag="id9",  loaded=false,  vehicle_id=-1,  location="MEIER 5_14"},
-	{tag="id10",  loaded=false,  vehicle_id=-1,  location="MEIER 24_3"},
-	{tag="id11",  loaded=false,  vehicle_id=-1,  location="MEIER 26_14"},
-	{tag="id12",  loaded=false,  vehicle_id=-1,  location="TERMINAL SPYCAKES"},
-	{tag="id13",  loaded=false,  vehicle_id=-1,  location="ARCTIC OIL PLATFORM"},
-	{tag="id14",  loaded=false,  vehicle_id=-1,  location="ARCTIC ISLAND BASE"},
-	{tag="id15",  loaded=false,  vehicle_id=-1,  location="CREATIVE BASE"}
+g_savedata.crane_tags = {
+	{tag="id1"},
+	{tag="id2"},
+	{tag="id3"},
+	{tag="id4"},
+	{tag="id5"},
+	{tag="id6"},
+	{tag="id7"},
+	{tag="id8"},
+	{tag="id9"},
+	{tag="id10"},
+	{tag="id11"},
+	{tag="id12"},
+	{tag="id13"},
+	{tag="id14"},
+	{tag="id15"}
 }
 
 logging = {
@@ -367,204 +368,30 @@ function execute_potential_admin_possibility(full_message, user_peer_id, is_admi
 	end
 end
 
-function is_table(a)
-	return type(a) == "table"
-end
-function isnt_table(a)
-	return type(a) ~= "table"
-end
-function is_bool(a)
-	return type(a) == "boolean"
-end
-function isnt_bool(a)
-	return type(a) ~= "boolean"
-end
-function is_number(a)
-	return type(a) == "number"
-end
-function isnt_number(a)
-	return type(a) ~= "number"
-end
-function is_string(a)
-	return type(a) == "string"
-end
-function isnt_string(a)
-	return type(a) ~= "string"
-end
-
-function round(x) return math.floor((x+0.5)*100)/100 end
-
-function get_steam_id(peer_id)
-	local steam_id
-	local PLAYER_LIST = server.getPlayers()
-	for _, player in pairs(PLAYER_LIST) do
-		if player.id == peer_id then
-			steam_id = player.steam_id
-			break
-		end
-	end
-	if isnt_number(steam_id) then
-		warn_entire_chat("Peer "..peer_id.." wasn't found in returned PLAYER_LIST?? contact judge bruh")
-		return
-	end
-	return steam_id
-end
-
-function get_peer_id(steam_id)
-	local steam_id = tostring(steam_id)
-	local peer_id
-	local PLAYER_LIST = server.getPlayers()
-	for _, player in pairs(PLAYER_LIST) do
-		local this_player_steam_id = tostring(player.steam_id)
-		debug_announce_to_chat(2,"Comparing &",this_player_steam_id,"# and &",steam_id)
-		if this_player_steam_id:find(steam_id) then
-			peer_id = player.id
-			break
-		end
-	end
-	if peer_id == nil then
-		warn_entire_chat("Steamid &",steam_id,"# wasn't found in returned PLAYER_LIST?? contact judge bruh")
-		return
-	end
-	debug_announce_to_chat(2,"Connected steam id &",steam_id,"# to peer id &",peer_id)
-	return peer_id
-end
-
-function note_down_spawn_data(vehicle_id, peer_id)
-	if peer_id == -1 then
-		debug_announce_to_chat(2,"A vehicle was spawned by the server!")
-		return
-	end
-	if error_checking_not_relaxed then
-		for _,data in ipairs(g_savedata.spawning_queue_data) do
-			if data.vehicle_id == vehicle_id then
-				warn_entire_chat("Spawning vehicle shares vehicle id ("..vehicle_id..") with already spawned vehicle.. contact judge..")
-			end
-		end
-	end
-
-	table.insert(g_savedata.spawning_queue_data, {vehicle_id=vehicle_id, peer_id=peer_id})
-end
-
-function has_any_hopper(LOADED_VEHICLE_DATA)
-	return (next(LOADED_VEHICLE_DATA.components.hoppers)~=nil)
-end
-
-function matrixes_roughly_close(first_matrix,second_matrix)
-	local threshold = 100
-
-	if math.abs(first_matrix[13]-second_matrix[13]) > threshold then --x 13
-		return false
-	end
-	if math.abs(first_matrix[15]-second_matrix[15]) > threshold then --y 15
-		return false
-	end
-	if math.abs(first_matrix[14]-second_matrix[14]) > threshold then --z 14
-		return false
-	end
-
-	return true
-end
-
-function positions_slurpably_close(x1,y1,z1, x2,y2,z2)
-	if math.abs(x1-x2) > 1.5 then
-		return false
-	end
-	if math.abs(y1-y2) > 1.5 then
-		return false
-	end
-	if math.abs(z1-z2) > 2.5 then
-		return false
-	end
-
-	return true
-end
-function track_crane_as_despawned(crane_index)
-	g_savedata.crane_glob_of_info[crane_index].loaded = false
-	g_savedata.crane_glob_of_info[crane_index].vehicle_id = -1
-end
-
-function track_crane_as_spawned(crane_index, its_vehicle_id)
-	g_savedata.crane_glob_of_info[crane_index].loaded = true
-	g_savedata.crane_glob_of_info[crane_index].vehicle_id = its_vehicle_id
-end
-function handle_potential_crane_load(vehicle_id)
-	local this_tag = server.getVehicleData(vehicle_id).tags_full
+function is_crane(questioned_vehicle_id)
+	local this_tag = server.getVehicleData(questioned_vehicle_id).tags_full
 	
 	local found_match = false
-	for crane_index, this_crane in pairs(g_savedata.crane_glob_of_info) do
+	for crane_index, this_crane in pairs(g_savedata.crane_tags) do
 
 		--logic
 		if this_crane.tag ~= this_tag then
 			goto craneload_continue_next_crane
 		end
 		--sanity checks
-		if found_match ~= false then
+		if found_match == true then
 			warn_entire_chat("Warning! Vehicle loaded in with tag that matches MULTIPLE CRANES?? sticking with highest index one - contact judge!!!")
 		end
-		if this_crane.loaded ~= false then
-			warn_entire_chat("Warning! Vehicle loaded in matching crane tag of an ALREADY LOADED crane?? contact judge!!!")
-		end
 
-		found_match = crane_index
+		found_match = true
 
 		::craneload_continue_next_crane::
 	end
 
 	if found_match ~= false then
-		debug_announce_to_chat(2, "Crane loaded in at "..g_savedata.crane_glob_of_info[found_match].location)
-		track_crane_as_spawned(found_match, vehicle_id)
+		debug_announce_to_chat(2, "Crane (vid &",questioned_vehicle_id,"#) loaded in.")
 	end
-end
-
-function handle_potential_known_crane_unload(this_vehicle_id)
-	--scan through cranes and try to match a loaded crane's vehicle id to this unloading vehicle's id. If no crane matches, we're done here.
-	local matched_crane_index = false
-	for crane_index, this_crane in ipairs(g_savedata.crane_glob_of_info) do
-
-		--logic
-		if this_crane.vehicle_id ~= this_vehicle_id then
-			goto craneunload_continue_next_crane
-		end
-
-		--sanity
-		if matched_crane_index ~= false then
-			warn_entire_chat("Warning! Unloading vehicle matches vehicle id with MULTIPLE CRANES?? sticking with highest index one - contact judge!!!")
-		end
-		if this_crane.loaded ~= true then
-			warn_entire_chat("Warning! Unloading vehicle matches vehicle id with a NOT LOADED CRANE?? contact judge!!!")
-		end
-
-		matched_crane_index = crane_index
-
-		::craneunload_continue_next_crane::
-	end
-
-	if matched_crane_index ~= false then
-		track_crane_as_despawned(matched_crane_index)
-		debug_announce_to_chat(2,"Crane despawned at "..g_savedata.crane_glob_of_info[matched_crane_index].location)
-	end
-end
-
-function is_known_crane(questioned_vehicle_id)
-	local is_known_crane = false
-	for _, this_crane in ipairs(g_savedata.crane_glob_of_info) do
-		
-		--logic
-		if this_crane.vehicle_id ~= questioned_vehicle_id then
-			goto isknowncrane_continue_next_crane
-		end
-		--sanity
-		if is_known_crane == true then
-			warn_entire_chat("Warning, vehicle id "..questioned_vehicle_id.." matches with multiple cranes! contact judge!")
-		end
-		
-		is_known_crane = true
-
-		::isknowncrane_continue_next_crane::
-	end
-
-	return is_known_crane
+	return found_match
 end
 
 ---- !! CALLBACKS !! ----
@@ -576,6 +403,13 @@ end
 function onVehicleLoad(vehicle_id)
 	--debug_announce_to_chat(2, "onvehicleload called !")
 	debug_announce_to_chat(2, "Loading vehicle id: "..vehicle_id)
+	local fuck
+	if is_crane(vehicle_id) then
+		fuck = "is"
+	else
+		fuck = "is not"
+	end
+	debug_announce_to_chat(2, "This vehicle "..fuck.." a crane!")
 end
 
 function onVehicleUnload(vehicle_id)
