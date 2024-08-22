@@ -27,10 +27,10 @@ function round(x) return math.floor((x+0.5)*100)/100 end
 
 
 function slow_interval(ticks)
-	return (ticks%700) == 0 --1080 = 18 seconds
+	return (ticks%1800) == 0 --1800 = 30 seconds
 end
 function rapid_interval(ticks)
-	return (ticks%120) == 0 --120 = 2 seconds
+	return (ticks%300) == 0 --300 = 5 seconds
 end
 
 function get_steam_id(peer_id)
@@ -77,7 +77,7 @@ function note_down_spawn_data(vehicle_id, peer_id)
 	if error_checking_not_relaxed then
 		for _,data in ipairs(g_savedata.spawning_queue_data) do
 			if data.vehicle_id == vehicle_id then
-				warn_entire_chat("Spawning vehicle shares vehicle id ("..vehicle_id..") with already spawned vehicle.. contact judge..")
+				warn_entire_chat_and_popup_for_peer(peer_id,"Spawning vehicle shares vehicle id ("..vehicle_id..") with already spawned vehicle.. contact judge..")
 			end
 		end
 	end

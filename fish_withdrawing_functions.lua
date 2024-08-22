@@ -20,7 +20,7 @@ function recreate_rapid_info_table()
 
 		local hopper_vehicle_transform_matrix, is_success = server.getVehiclePos(hopper_vehicle_vid)
 		if not is_success then
-			warn_entire_chat("Failed to get position of hopper carrying vehicle with vid "..hopper_vehicle_vid)
+			warn_entire_chat_and_popup_for_peer(hopper_vehicle_peer_owner,"Failed to get position of hopper carrying vehicle with vid "..hopper_vehicle_vid)
 			goto recreate_continue_next_hopper_vehicle
 		end
 		
@@ -31,7 +31,7 @@ function recreate_rapid_info_table()
 			end
 			local known_crane_transform_matrix, is_success = server.getVehiclePos(all_info_this_crane.vehicle_id)
 			if not is_success then
-				warn_entire_chat("Failed to get position of crane at "..all_info_this_crane.location)
+				warn_entire_chat_and_popup_for_peer(hopper_vehicle_peer_owner,"Failed to get position of crane at "..all_info_this_crane.location)
 				goto recreate_continue_next_crane
 			end
 
@@ -169,17 +169,17 @@ function advance_this_fish_withdrawal(this_task_index)
 
 	--sanity
 	if not succeeded_getting_components then
-		warn_entire_chat("Error while withdrawing: Was unable to get vehicle "..my_data.premise.vehicle_id.."'s data to withdraw! Exiting early, this may be really bad, so please contact judge!")
+		warn_entire_chat_and_popup_for_peer(my_data.premise.peer_id, "Error while withdrawing: Was unable to get vehicle &",tostring(my_data.premise.vehicle_id),"#'s data to withdraw! Exiting early, this may be really bad, so please contact judge!")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
 	if error_checking_not_relaxed and isnt_table(LOADED_VEHICLE_DATA.components) then
-		warn_entire_chat("Error while withdrawing: .components is not a table? Exiting early, this may be really bad, so please contact judge!")
+		warn_entire_chat_and_popup_for_peer(my_data.premise.peer_id, "Error while withdrawing: .components is not a table? Exiting early, this may be really bad, so please contact judge!")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
 	if error_checking_not_relaxed and isnt_table(LOADED_VEHICLE_DATA.components.hoppers) then
-		warn_entire_chat("Error while withdrawing: .components.hoppers is not a table? Exiting early, this may be really bad, so please contact judge!")
+		warn_entire_chat_and_popup_for_peer(my_data.premise.peer_id, "Error while withdrawing: .components.hoppers is not a table? Exiting early, this may be really bad, so please contact judge!")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
@@ -192,12 +192,12 @@ function advance_this_fish_withdrawal(this_task_index)
 		return
 	end
 	if total_fishes_in_vehicle < 0 then
-		warn_entire_chat("Error while withdrawing: amount of fishes in vehicle is negative ?? Contact judge...")
+		warn_entire_chat_and_popup_for_peer(my_data.premise.peer_id,"Error while withdrawing: amount of fishes in vehicle is negative ?? Contact judge...")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
 	if my_data.state.remaining_to_withdraw < 0 then
-		warn_entire_chat("Error while withdrawing: amount remaining to withdraw is negative! Contact judge...")
+		warn_entire_chat_and_popup_for_peer(my_data.premise.peer_id,"Error while withdrawing: amount remaining to withdraw is negative! Contact judge...")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
@@ -206,12 +206,14 @@ function advance_this_fish_withdrawal(this_task_index)
 	if my_data.state.remaining_to_withdraw == 0 then
 		debug_announce_to_chat(2, "Fish withdrawal task number "..this_task_index.." is done withdrawing!")
 		formulate_send_fish_task_http(my_data)
+		peer_popup(my_data.premise.peer_id, 8, "Crane slurped &",(my_data.premise.to_withdraw-my_data.state.remaining_to_withdraw),"# fishes!")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
 	if total_fishes_in_vehicle == 0 then
 		debug_announce_to_chat(2, "Ending withdrawal, "..my_data.state.remaining_to_withdraw.." left to withdraw")
 		formulate_send_fish_task_http(my_data)
+		peer_popup(my_data.premise.peer_id, 8, "Crane slurped &",(my_data.premise.to_withdraw-my_data.state.remaining_to_withdraw),"# fishes - the hopper is empty!")
 		clear_fish_withdrawal(this_task_index)
 		return
 	end
@@ -239,7 +241,7 @@ function advance_this_fish_withdrawal(this_task_index)
 				my_data.state.remaining_to_withdraw = my_data.state.remaining_to_withdraw - amount_of_this_fish
 				my_data.state.specific_withdrawn[fish_type] = my_data.state.specific_withdrawn[fish_type] + amount_of_this_fish
 			else
-				warn_entire_chat("Error while withdrawing: not less or same to withdraw than amount of fish, and not more to withdraw than amount of fish! Contact judge...")
+				warn_entire_chat_and_popup_for_peer(my_data.premise.peer_id,"Error while withdrawing: not less or same to withdraw than amount of fish, and not more to withdraw than amount of fish! Contact judge...")
 				clear_fish_withdrawal(this_task_index)
 				return
 			end
@@ -331,7 +333,7 @@ function check_queue_all_withdrawals()
 			::checkqueueall_continue_next_hopper_vehicle::
 
 			if found_a_single_slurpable_hopper_in_this_vehicle then
-				queue_fish_withdrawal(crane_index, hopper_vehicle_vid, 75, hopper_vehicle_peer_owner)--75 standard for now
+				queue_fish_withdrawal(crane_index, hopper_vehicle_vid, 190, hopper_vehicle_peer_owner)
 			end
 		end
 

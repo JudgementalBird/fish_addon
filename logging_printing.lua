@@ -1,5 +1,5 @@
 ---- DEBUG / PRINT ----
-function debugprint(...) --
+function prepare_string(...) --
 	local args = {...}
 	local assembled = ""
 	for i = 1, #args do
@@ -13,16 +13,31 @@ function debugprint(...) --
 
 	assembled = assembled:gsub(".?.?#", ""):gsub("&.?.?", "")
 	
-	server.announce("[Fish Expansion]", assembled, ANNOUNCE_TO)
+	return assembled
+end
+function debugprint(...) --
+	server.announce("[Fish Expansion]", prepare_string(...), ANNOUNCE_TO)
 end
 function peerprint(peer_id,...)
 	ANNOUNCE_TO = peer_id
 	debugprint(...)
 	ANNOUNCE_TO = -1
 end
+function peer_popup(peer_id,notification_type,...)
+	if (notification_type < 0) or (notification_type > 11) then
+		notification_type = 8
+	end
+	server.notify(peer_id, "Info", prepare_string(...), notification_type)
+end
 --just different names to provide intent where calling:
 function warn_entire_chat(...)
 	debugprint(...)
+end
+function warn_entire_chat_and_popup_for_peer(peer_id, ...)
+	local to_say = prepare_string(...)
+	warn_entire_chat(to_say)
+	server.notify(peer_id, "Warning", to_say, 3)
+	debugprint(to_say)
 end
 function announce_to_entire_chat(...)
 	debugprint(...)

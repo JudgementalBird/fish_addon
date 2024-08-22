@@ -74,15 +74,13 @@ function onVehicleDespawn(vehicle_id, peer_id)
 end
 
 function onCustomCommand(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
+
+	--debug_announce_to_chat(3, "onCustomCommand() called with '"..command.."'. User is admin? "..tostring(is_admin)..". User is auth? "..tostring(is_auth)..".")
+
+	--|To add user commands that USE HTTP, add to 'user_possibilities.http' (in user_possibilities.lua).|
+	--|To add user commands that DON'T use HTTP, add to 'user_possibilities.no_http' (in user_possibilities.lua).|
+	execute_potential_user_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
 	
-	if not disable_much_core_functionality then
-
-		--debug_announce_to_chat(3, "onCustomCommand() called with '"..command.."'. User is admin? "..tostring(is_admin)..". User is auth? "..tostring(is_auth)..".")
-
-		--|To add user commands that USE HTTP, add to 'user_possibilities.http' (in user_possibilities.lua).|
-		--|To add user commands that DON'T use HTTP, add to 'user_possibilities.no_http' (in user_possibilities.lua).|
-		execute_potential_user_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
-	end
 	--|To add admin only commands that USE HTTP, add to 'admin_possibilities.http' (in admin_possibilities.lua).|
 	--|To add admin only commands that DON'T use HTTP, add to 'admin_possibilities.no_http' (in admin_possibilities.lua).|
 	execute_potential_admin_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)

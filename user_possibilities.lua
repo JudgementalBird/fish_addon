@@ -23,7 +23,7 @@ user_possibilities = {
 						peer_flag = tonumber(peer_flag)
 						to_print = withoutreplyflag(withoutpeerflag(reply))
 					end
-					peerprint(peer_flag, to_print)
+					peer_popup(peer_flag, 8, to_print)
 				end
 			}
 		}

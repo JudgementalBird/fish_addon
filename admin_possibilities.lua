@@ -79,6 +79,16 @@ admin_possibilities = {
 				end
 			end
 		},{
+			command = {"?test_notify"},
+			run = function(full_message, user_peer_id, is_admin, is_auth, command, one, two, three)
+				local title, message, notification_type = one, two, tonumber(three)
+				if (title == nil) or (message  == nil) or (isnt_number(notification_type)) or (notification_type > 11) or (notification_type < 0) then
+					peerprint(user_peer_id, "This command needs a title, a message, and a notification type (0-11)")
+					return
+				end
+				server.notify(user_peer_id, title, message, notification_type)
+			end
+		},{
 			command = {"?disable_logic"},
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
 				disable_much_core_functionality = not disable_much_core_functionality
@@ -141,7 +151,7 @@ admin_possibilities = {
 				for k,hopper_vehicle_data in ipairs(g_savedata.known_hopper_holding_vehicles) do
 					if hopper_vehicle_data.vehicle_id == vid then
 						if match ~= false then
-							warn_entire_chat("While clearing known hopper vehicle, multiple vehicles matched the provided id! Contact judge!")
+							warn_entire_chat_and_popup_for_peer(user_peer_id, "While clearing known hopper vehicle, multiple vehicles matched the provided id! Contact judge!")
 						end
 						match = k
 					end
@@ -218,7 +228,7 @@ admin_possibilities = {
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
 				local transform_matrix, is_success = server.getPlayerPos(user_peer_id)
 				if not is_success then
-					warn_entire_chat("Failed to get player position")
+					warn_entire_chat_and_popup_for_peer(user_peer_id,"Failed to get player position")
 					return
 				end
 				if not g_savedata.positions then
@@ -237,7 +247,7 @@ admin_possibilities = {
 				end
 				local transform_matrix, is_success = server.getPlayerPos(user_peer_id)
 				if not is_success then
-					warn_entire_chat("Failed to get player position")
+					warn_entire_chat_and_popup_for_peer(user_peer_id,"Failed to get player position")
 					return
 				end
 				local now_pos = {x=transform_matrix[13],y=transform_matrix[15],z=transform_matrix[14]}
