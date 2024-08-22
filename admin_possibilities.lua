@@ -160,12 +160,6 @@ admin_possibilities = {
 				peerprint(user_peer_id, "Tried to set hopper with name "..two.." on vehicle "..one.." to have "..three.." "..tostring(hopper_resource_lookup[four]).." ("..four..")")
 			end
 		},{
-			command = {"?queue_all_cranes"},
-			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				handle_queueing_cranes()
-				peerprint(user_peer_id, "Tried to handle queueing all cranes!")
-			end
-		},{
 			command = {"?simreboot"},
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
 				peerprint(user_peer_id, "Calling onCreate() !")
@@ -211,8 +205,12 @@ admin_possibilities = {
 		},{
 			command = {"?list_known_hopper_vehicles"},
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
-				for _,v in ipairs(g_savedata.known_hopper_holding_vehicles) do
-					peerprint("vid: "..v.vehicle_id.." (peer "..v.peer_id..")")
+				for _,hopper_vehicle_data in ipairs(g_savedata.known_hopper_holding_vehicles) do
+					local loaded_string = "spawned"
+					if hopper_vehicle_data.loaded == false then
+						loaded_string = "not spawned"
+					end
+					peerprint("vid: &",hopper_vehicle_data.vehicle_id,"# (peer &",hopper_vehicle_data.peer_id,"#) - &",loaded_string)
 				end
 			end
 		},{

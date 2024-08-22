@@ -45,14 +45,14 @@ end
 
 function onVehicleSpawn(vehicle_id, peer_id, x, y, z, group_cost, group_id)
 	--debug_announce_to_chat(2, "onvehiclespawn called !")
-	--debug_announce_to_chat(2, "Spawning vehicle id: "..vehicle_id)
+	debug_announce_to_chat(2, "Spawning vehicle id: &",vehicle_id)
 
 	note_down_spawn_data(vehicle_id, peer_id)
 end
 
 function onVehicleLoad(vehicle_id)
 	--debug_announce_to_chat(2, "onvehicleload called !")
-	--debug_announce_to_chat(2, "Loading vehicle id: "..vehicle_id)
+	debug_announce_to_chat(2, "Loading vehicle id: &",vehicle_id)
 
 	handle_potential_crane_load(vehicle_id)
 	if not loaded_vic_is_crane(vehicle_id) then

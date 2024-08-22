@@ -9,9 +9,14 @@ function recreate_rapid_info_table()
 
 	--construct
 	for _,hopper_vehicle_data in ipairs(g_savedata.known_hopper_holding_vehicles) do
-		
+		local loaded = (hopper_vehicle_data.loaded ~= false)
 		local hopper_vehicle_vid = hopper_vehicle_data.vehicle_id
 		local hopper_vehicle_peer_owner = hopper_vehicle_data.peer_id
+
+		if not loaded then
+			debug_announce_to_chat(3,"Skipping unloaded hopper carrying vehicle with vid "..hopper_vehicle_vid)
+			goto recreate_continue_next_hopper_vehicle
+		end
 
 		local hopper_vehicle_transform_matrix, is_success = server.getVehiclePos(hopper_vehicle_vid)
 		if not is_success then
