@@ -35,7 +35,7 @@ logging = {
 		"involved debug",
 		"ALL debug"
 	},
-	debugstate = 2,
+	debugstate = 1,
 	get_debug = function()
 		return logging.debug[logging.debugstate]
 	end,
