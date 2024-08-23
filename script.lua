@@ -85,7 +85,9 @@ function onCustomCommand(full_message, user_peer_id, is_admin, is_auth, command,
 	--|To add admin only commands that DON'T use HTTP, add to 'admin_possibilities.no_http' (in admin_possibilities.lua).|
 	execute_potential_admin_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
 
-	--potentially_note_down_queued_ash_vehicle(user_peer_id, command, one, two)
+	if is_ash_vehicle_load(user_peer_id,command) then
+		potentially_note_down_queued_ash_vehicle(user_peer_id, command, one, two)
+	end
 end
 
 function httpReply(port, request, reply)
