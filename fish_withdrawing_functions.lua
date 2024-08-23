@@ -120,7 +120,7 @@ function queue_fish_withdrawal(crane_index, vehicle_id, to_withdraw, peer_id)
 
 	debug_announce_to_chat(3, "Queueing a fish withdrawal"..(#g_savedata.fish_withdrawal_tasks).."!")
 	local task_data = {premise={crane_index=crane_index, vehicle_id=vehicle_id, to_withdraw=to_withdraw, peer_id=peer_id}, state={remaining_to_withdraw=to_withdraw, first_tick=true, specific_withdrawn={}}}
-	for i = 13,55 do
+	for i = 13,79 do
 		task_data.state.specific_withdrawn[i] = 0
 	end
 	table.insert(g_savedata.fish_withdrawal_tasks,task_data)
@@ -142,7 +142,7 @@ function tally_up_fishes_in(hoppers)
 			return
 		end
 
-		for i = 13,55 do
+		for i = 13,79 do
 			local fish_type, amount_of_this_fish = i, hopper.values[i]
 
 			if amount_of_this_fish > 0 then
@@ -221,7 +221,7 @@ function advance_this_fish_withdrawal(this_task_index)
 	-- At this point there must be fishes in the vehicle, and fishes remaining to withdraw.
 	-- Withdraw from a fish type there is > 0 of in a hopper, then break.
 	for hopper_index, hopper in pairs(LOADED_VEHICLE_DATA.components.hoppers) do
-		for i = 13,55 do
+		for i = 13,79 do
 			local fish_type, amount_of_this_fish = i, hopper.values[i]
 			local new_fish_quantity = 0
 

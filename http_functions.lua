@@ -23,7 +23,7 @@ function formulate_send_fish_task_http(task_data)
 	local request = "/withdrew/"..crane_index.."/"..steam_id.."/"
 	
 	local withdrawn_string = ""
-	for i = 13,55 do
+	for i = 13,79 do
 		local fish_type, amount_of_this_fish = i, specific_withdrawn[i]
 
 		if amount_of_this_fish > 0 then
