@@ -25,6 +25,14 @@ end
 
 function round(x) return math.floor((x+0.5)*100)/100 end
 
+function toboolean(str)
+	local bool = false
+	if str == "true" then
+		 bool = true
+	end
+	return bool
+end
+
 
 function slow_interval(ticks)
 	return (ticks%1800) == 0 --1800 = 30 seconds

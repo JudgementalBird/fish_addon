@@ -18,7 +18,7 @@ require("fish_withdrawing_functions")
 
 require("http_functions")
 
---require("ash_vehicles_integration")
+require("ash_vehicles_integration")
 
 ---- !! CALLBACKS !! ----
 
@@ -75,15 +75,18 @@ end
 
 function onCustomCommand(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
 
-	--debug_announce_to_chat(3, "onCustomCommand() called with '"..command.."'. User is admin? "..tostring(is_admin)..". User is auth? "..tostring(is_auth)..".")
+	--announce_to_entire_chat("onCustomCommand() called with:")
+	--announce_to_entire_chat("full_message: &", full_message, "  #user_peer_id: &", user_peer_id, "  #is_admin: &", is_admin, "  #is_auth: &", is_auth, "  #command: &", command, "  #one: &", one, "  #two: &", two, "  #three: &", three, "  #four: &", four)
 
 	--|To add user commands that USE HTTP, add to 'user_possibilities.http' (in user_possibilities.lua).|
 	--|To add user commands that DON'T use HTTP, add to 'user_possibilities.no_http' (in user_possibilities.lua).|
 	execute_potential_user_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
 	
-	--|To add admin only commands that USE HTTP, add to 'admin_possibilities.http' (in admin_possibilities.lua).|
-	--|To add admin only commands that DON'T use HTTP, add to 'admin_possibilities.no_http' (in admin_possibilities.lua).|
-	execute_potential_admin_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
+	if is_admin then
+		--|To add admin only commands that USE HTTP, add to 'admin_possibilities.http' (in admin_possibilities.lua).|
+		--|To add admin only commands that DON'T use HTTP, add to 'admin_possibilities.no_http' (in admin_possibilities.lua).|
+		execute_potential_admin_possibility(full_message, user_peer_id, is_admin, is_auth, command, one, two, three, four)
+	end
 
 	if is_ash_vehicle_load(user_peer_id,command) then
 		potentially_note_down_queued_ash_vehicle(user_peer_id, command, one, two)

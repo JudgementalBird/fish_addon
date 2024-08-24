@@ -1,12 +1,16 @@
 function is_ash_vehicle_load(spawner_user_id, command)
-	return not (spawner_user_id == -1) and (command == "ashvehicle")
+	--announce_to_entire_chat("Called: is_ash_vehicle_load(&",spawner_user_id,"#, &",command,"#)")
+	--announce_to_entire_chat("Type of spawner_user_id is: &",spawner_user_id)
+	--announce_to_entire_chat("Type of command is: &",command)
+	--announce_to_entire_chat("Type of tonumber(spawner_user_id) is &",type(tonumber(spawner_user_id)))
+	--announce_to_entire_chat("Type of command is &",type(command))
+	return (tonumber(spawner_user_id) == -1) and (command == "ashvehicle")
 end
 
 function potentially_note_down_queued_ash_vehicle(spawner_user_id, command, group_id, vehicle_peer_id)
+	local vehicle_peer_id = tonumber(vehicle_peer_id)
 	if 
-		(isnt_number(vehicle_peer_id) and isnt_string(vehicle_peer_id))
-		or (is_number(vehicle_peer_id) and (vehicle_peer_id >= 100))
-		or (is_string(vehicle_peer_id) and (vehicle_peer_id:len() >= 3))
+		(isnt_number(vehicle_peer_id))  or  (is_number(vehicle_peer_id) and (vehicle_peer_id >= 300))
 	then
 		warn_entire_chat("Ash vehicles provided a peer id that did not pass a validity test!\nCode will assume the test is invalid and the peer id is correct, this may break things, please contact judge!")
 	end
