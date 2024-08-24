@@ -23,6 +23,8 @@ require("ash_vehicles_integration")
 ---- !! CALLBACKS !! ----
 
 function onCreate(is_world_create)
+	wipe_globals()
+	setup_globals()
 	debug_announce_to_chat(2, "oncreate called !")
 	ticks = 0
 end

@@ -17,7 +17,9 @@ function potentially_note_down_queued_ash_vehicle(spawner_user_id, command, grou
 
 	--debug_announce_to_chat(2,"full_message: &", full_message, "spawner_user_id: &", spawner_user_id, "is_admin: &", is_admin, "is_auth: &", is_auth, "command: &", command, "one: &", one, "two: &", two, "three: &", three, "four: &", four)
 	local vehicle_ids, is_success = server.getVehicleGroup(group_id)
+	debug_announce_to_chat(2,"Within the return from getVehicleGroup() of the gid ash gave, was the following:")
 	for _, vehicle_id in pairs(vehicle_ids) do
+		debug_announce_to_chat(2,vehicle_id)
 		if error_checking_not_relaxed then
 			for _,already_queued in ipairs(g_savedata.spawning_queue_data) do
 				if already_queued.vehicle_id == vehicle_id then
@@ -25,7 +27,7 @@ function potentially_note_down_queued_ash_vehicle(spawner_user_id, command, grou
 				end
 			end
 		end
-		table.insert(g_savedata.spawning_queue_data, {vehicle_id = vehicle_id, peer_id = vehicle_peer_id})
+		table.insert(g_savedata.spawning_queue_data, {vehicle_id = vehicle_id, peer_id = vehicle_peer_id, loaded = false})
 		debug_announce_to_chat(2,"Ash vehicle spawn noted down! Will try handling it as a hopper vehicle")
 		handle_potential_hopper_vehicle_load(vehicle_id)
 		debug_announce_to_chat(2,"Ash vehicle load handled!")

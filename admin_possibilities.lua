@@ -224,6 +224,12 @@ admin_possibilities = {
 				end
 			end
 		},{
+			command = {"?reset_g_savedata"},
+			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
+				wipe_globals()
+				setup_globals()
+			end
+		},{
 			command = {"?distset","?ds"},
 			run = function(full_message, user_peer_id, is_admin, is_auth, command, one)
 				local transform_matrix, is_success = server.getPlayerPos(user_peer_id)

@@ -35,10 +35,10 @@ end
 
 
 function slow_interval(ticks)
-	return (ticks%1800) == 0 --1800 = 30 seconds
+	return (ticks%300) == 0 --1800 = 30 seconds
 end
 function rapid_interval(ticks)
-	return (ticks%300) == 0 --300 = 5 seconds
+	return (ticks%50) == 0 --300 = 5 seconds
 end
 
 function get_steam_id(peer_id)
