@@ -1,3 +1,3 @@
-# WIP Fishing addon for StormLands
-Unfinished, but finished in time for, and to the extent in the promise I made in my cave channel in StormLands.
-The code in this project is no good. It was my first big rust project, and I was interacting with several technologies for the first time.
+# WIP Lua code for the fishing addon for StormLands
+Not entirely finished, but usable in time for, and to the extent of the promise I made in my cave channel in StormLands.
+There is additionally a rust backend to work with this.
